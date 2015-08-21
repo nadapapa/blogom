@@ -19,7 +19,7 @@
     <meta property="og:locale" content="hu_HU" />
     <meta property="og:title" content="Blog" />
     <meta property="og:description" content="Egy blog" />
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!--------------------------- BOOTSTRAP ---------------------------------->
     <!-- Latest compiled and minified CSS -->
@@ -35,9 +35,7 @@
   </head>
 
   <body>
-    <?php
-include('includes/nav.php')
-?>
+    <?php include('includes/nav.php'); ?>
 
       <div class="container">
         <div class="row">
@@ -56,7 +54,7 @@ include('includes/nav.php')
               <!-- ide jönnek a posztok infinte scrollal -->
               <?php require('includes/posts.php');?>
             </div>
-            <button class="btn btn-default loadAjax">load more</button>
+            <button class="btn btn-default loadAjax">Még!</button>
           </div>
           <div class="col-md-4 sidebar">
             <?php require('includes/sidebar.php');?>

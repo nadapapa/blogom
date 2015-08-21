@@ -2,6 +2,10 @@ body {
     padding-top: 40px;
 }
 
+.btn-default .badge {
+  background-color: #777;
+}
+
 footer {
     margin: 50px 0;
 }
@@ -39,12 +43,17 @@ a:activate {
   transition: background-size 0.3s, color 0.5s;
 }
 
-a:hover {
+.link:hover {
   padding-left: 0.3em;
   padding-right: 0.3em;
   background-size: 100% 1.5em;
   color: white;
   text-decoration: none;
+}
+
+.panel-default {
+
+  box-shadow: 1px 1px 2px #787878;
 }
 
 button.loadAjax {

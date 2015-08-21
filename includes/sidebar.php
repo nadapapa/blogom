@@ -1,5 +1,5 @@
 <div class="well well-sm">
-<h3>Recent Posts</h3>
+<h3>Friss posztok</h3>
 <hr />
 
 <ul>
@@ -13,16 +13,16 @@ while($row = $stmt->fetch()){
 </div>
 
 <div class="well well-sm">
-<h3>Categories</h3>
-
+<h3>Kategóriák</h3>
+<hr />
 <ul class="list-group">
 <?php
 $stmt = $db->query('SELECT catTitle, catSlug FROM blog_cats ORDER BY catID DESC');
 $cat = $db->query('SELECT catID, COUNT(*) FROM blog_post_cats GROUP BY catID ORDER BY catID DESC');
 while($row = $stmt->fetch()){
 	echo '
-		<a href="c-'.$row['catSlug'].'" class="list-group-item" role="button">'.$row['catTitle'].'
-		<span class="badge">'.$catid = $cat->fetch()['COUNT(*)'].'</span></a>
+	<a class="btn btn-default btn-sm" href="c-'.$row['catSlug'].'">'.$row['catTitle'].'
+	<span class="badge">'.$catid = $cat->fetch()['COUNT(*)'].'</span></a>
 ';
 }
 ?>
@@ -30,16 +30,17 @@ while($row = $stmt->fetch()){
 </div>
 
 <div class="well well-sm">
-<h3>Archives</h3>
+<h3>Archívum</h3>
 <hr />
+<ul class="list-group">
 
-<ul>
 <?php
 $stmt = $db->query("SELECT Month(postDate) as Month, Year(postDate) as Year FROM blog_posts_seo GROUP BY Month(postDate), Year(postDate) ORDER BY postDate DESC");
+$date = $db->query('SELECT Month(postDate) as Month, Year(postDate) as Year, COUNT(*) FROM blog_posts_seo GROUP BY Month(postDate), Year(postDate) ORDER BY postDate DESC');
 while($row = $stmt->fetch()){
 	$monthName = date("F", mktime(0, 0, 0, $row['Month'], 10));
 	$slug = 'a-'.$row['Month'].'-'.$row['Year'];
-	echo "<li><a href='$slug'>$monthName</a></li>";
+	echo '<a class="list-group-item" role="button" href='.$slug.'>'.$monthName.'<span class="badge">'.$dateid = $date->fetch()['COUNT(*)'].'</span></a>';
 }
 ?>
 </ul>

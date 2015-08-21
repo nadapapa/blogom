@@ -9,7 +9,7 @@ $(function(){
 
         success: function(data) {
           if(data == ''){
-            $('.loadAjax').html('no more');
+            $('.loadAjax').html('Nincs több :(');
             $('.loadAjax').attr('disabled', true);
           }
           counter += 3;
