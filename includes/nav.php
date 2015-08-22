@@ -10,14 +10,18 @@
       <a class="navbar-brand" href="../../index.php">Blog</a>
   </div>
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-     <ul class="nav navbar-nav">
-       <li<?php if($_SERVER['REQUEST_URI'] == "/apps/apps.php"){echo ' class="active"';}?>><a href="/apps/apps.php">Appok<span class="sr-only"></span></a></li>
-       <li <?php if($_SERVER['REQUEST_URI'] == "/about.php"){echo ' class="active"';}?>><a href="/about.php">About</a></li>
-       <li>
-       <a href="#">
+    <ul class="nav navbar-nav">
+      <li<?php if($_SERVER['REQUEST_URI'] == "/apps/apps.php"){echo ' class="active"';}?>>
+        <a href="/apps/apps.php">Appok<span class="sr-only"></span>
+        </a>
+      </li>
 
-                                    <i class="fa fa-github fa-3x"></i>
+      <li <?php if($_SERVER['REQUEST_URI'] == "/about.php"){echo ' class="active"';}?>><a href="/about.php">About</a></li>
 
-                            </a></li>
-     </ul>
+      <li>
+        <a class="fa fa-github fa-2x" href="https://github.com/nadapapa">
+
+        </a>
+      </li>
+    </ul>
 </nav>
