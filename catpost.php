@@ -26,8 +26,7 @@ if($row['catID'] == ''){
 
     <title>Blog/Kategória/<?php if (isset($row)){echo $row['catTitle'];}?></title>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!--------------------------- BOOTSTRAP ---------------------------------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>    <!--------------------------- BOOTSTRAP ---------------------------------->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Latest compiled and minified JavaScript -->
@@ -86,7 +85,7 @@ if($row['catID'] == ''){
 	</div>
 	<div class="panel-body">
 		<small>
-			<p><span class="glyphicon glyphicon-time"></span> '.date('Y M. s - H:i', strtotime($row['postDate'])).' in ';
+			<p><span class="glyphicon glyphicon-calendar"></span> '.date('Y M. s - H:i', strtotime($row['postDate'])).' in ';
 
 						$stmt2 = $db->prepare('SELECT catTitle, catSlug	FROM blog_cats, blog_post_cats WHERE blog_cats.catID = blog_post_cats.catID AND blog_post_cats.postID = :postID');
 						$stmt2->execute(array(':postID' => $row['postID']));

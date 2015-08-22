@@ -1,5 +1,5 @@
 body {
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .btn-default .badge {
@@ -9,7 +9,8 @@ body {
 footer {
     margin: 50px 0;
 }
-a:hover,
+
+a:hover
 a:focus
 a:activate {
   text-decoration: none;
@@ -51,8 +52,21 @@ a:activate {
   text-decoration: none;
 }
 
-.panel-default {
+.navbar {
+  background-color:rgba(196, 196, 196, 0.5);
+  color: #0021ff;
+}
 
+.nav > li {
+  display: block;
+      float: left;
+}
+.navbar-nav > li {
+    float: left;
+  }
+
+.well,
+.panel-default {
   box-shadow: 1px 1px 2px #787878;
 }
 

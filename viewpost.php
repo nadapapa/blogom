@@ -36,7 +36,7 @@ require('includes/head.php');
 					 <div class="panel-body">
 	           <small>
 	             <p>
-					    <span class="glyphicon glyphicon-time"></span> '.date('Y M. s - H:i', strtotime($row['postDate'])).' in ';
+					    <span class="glyphicon glyphicon-calendar"></span> '.date('Y M. s - H:i', strtotime($row['postDate'])).' in ';
 
 						$stmt2 = $db->prepare('SELECT catTitle, catSlug	FROM blog_cats, blog_post_cats WHERE blog_cats.catID = blog_post_cats.catID AND blog_post_cats.postID = :postID');
 						$stmt2->execute(array(':postID' => $row['postID']));
