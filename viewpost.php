@@ -6,7 +6,7 @@ $row = $stmt->fetch();
 
 //if post does not exists redirect user.
 if($row['postID'] == ''){
-	header('Location: ./');
+	header('Location: ./404.php');
 	exit;
 }
 require('includes/head.php');

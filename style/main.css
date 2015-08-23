@@ -52,19 +52,6 @@ a:activate {
   text-decoration: none;
 }
 
-.navbar {
-  background-color:rgba(196, 196, 196, 0.5);
-  color: #0021ff;
-}
-
-.nav > li {
-  display: block;
-      float: left;
-}
-.navbar-nav > li {
-    float: left;
-  }
-
 .well,
 .panel-default {
   box-shadow: 1px 1px 2px #787878;
@@ -78,4 +65,9 @@ button.loadAjax {
 .panel-title {
   font-size: 1.5em;
   font-weight: 900;
+}
+
+ul.nav:nth-child(3) > li:nth-child(1) > a:nth-child(1) {
+  padding-top: 9px;
+  padding-bottom: 9px;
 }

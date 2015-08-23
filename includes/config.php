@@ -1,6 +1,8 @@
 <?php
 ob_start();
 session_start();
+
+setlocale(LC_TIME,'Hungarian');
 if(file_exists('creds.php')){
   require_once('creds.php');
 }elseif(file_exists('/creds.php')){
