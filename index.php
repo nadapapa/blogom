@@ -7,6 +7,21 @@ $row = array(
       require('includes/head.php');
 ?>
 <body>
+  <?php
+  $pagetype = 'index';
+  $catid = '';
+  $from = '';
+  $to = '';
+
+  echo
+  "<script>
+    var from = '';
+    var to = '';
+    var pagetype = 'index';
+    var catid =  '';
+  </script>";?>
+  <script src="/includes/infinite.js"></script>
+
   <?php include('includes/nav.php'); ?>
     <div class="container">
       <div class="row">
@@ -20,8 +35,14 @@ $row = array(
       <div class="row">
         <div class="col-md-8">
           <div class="posts">
-            <!-- ide jönnek a posztok infinte scrollal -->
-            <?php require('includes/ajax.php');?>
+            <?php
+            //
+            // $dbstring = 'SELECT *
+            //   FROM blog_posts_seo
+            //   ORDER BY postID
+            //   DESC';
+
+            require('includes/ajax.php');?>
           </div>
           <button class="btn btn-default loadAjax">Még!</button>
         </div>
@@ -30,5 +51,4 @@ $row = array(
         </div>
       </div>
     </div>
-    <script src="/includes/infinite.js"></script>
 </body></html>

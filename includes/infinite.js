@@ -1,11 +1,15 @@
 $(function(){
-
   var counter = 3;
   $(".loadAjax").on("click", function(){
       $.ajax({
         url: 'includes/ajax.php',
         type: 'get',
-        data: {'page': counter},
+        data: {'page': counter,
+               'pagetype': pagetype,
+               'catid': catid,
+               'from': from,
+               'to': to
+             },
 
         success: function(data) {
           if(data == ''){

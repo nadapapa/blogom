@@ -57,5 +57,5 @@ if(isset($row['postDesc'])){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!-- CSS -->
-   <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/main.css">
  </head>
