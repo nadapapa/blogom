@@ -1,15 +1,25 @@
-<?php require('includes/config.php');
+<?php
+  require('includes/config.php');
 
-$stmt = $db->prepare('SELECT postID, postTitle, postCont, postDate, postDesc FROM blog_posts_seo WHERE postSlug = :postSlug');
-$stmt->execute(array(':postSlug' => $_GET['id']));
-$row = $stmt->fetch();
+  $stmt = $db->prepare(
+    'SELECT
+      postID,
+      postTitle,
+      postCont,
+      postDate,
+      postDesc
+    FROM blog_posts_seo
+    WHERE postSlug = :postSlug');
+  $stmt->execute(array(':postSlug' => $_GET['id']));
+  $row = $stmt->fetch();
 
 //if post does not exists redirect user.
-if($row['postID'] == ''){
-	header('Location: ./404.php');
-	exit;
-}
-require('includes/head.php');
+  if($row['postID'] == ''){
+    header('Location: ./404.php');
+  exit;
+  }
+
+  require('includes/head.php');
 ?>
 
 <body>
@@ -27,14 +37,13 @@ require('includes/head.php');
 	<div class="row">
     <div class="col-md-8">
       <div class="posts">
-			  <div class="panel panel-default">
-			  	 <div class="panel-heading">
-						 <?php echo '
-				  	 <h2 class="panel-title">'.$row['postTitle'].'
-						 </h2>
-					 </div><!--panel heading-->
-					 <div class="panel-body">
-	           <small>
+	  		  <div class="panel panel-default">
+		  	  	 <div class="panel-heading">
+			    		 <?php echo '
+		  		  	 <h2 class="panel-title">'.$row['postTitle'].'</h2>
+           </div><!--panel heading-->
+				      	 <div class="panel-body">
+	             <small>
 	             <p>
 					    <span class="glyphicon glyphicon-calendar"></span> '.date('Y M. s - H:i', strtotime($row['postDate'])).' in ';
 

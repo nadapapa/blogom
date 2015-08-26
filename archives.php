@@ -10,15 +10,15 @@
 <body>
   <?php
   // az ajax.php-ben az adatbázis-lekéréshez szükséges adatok
-    $from = date("'Y-m-01 00:00:00'", strtotime("$year-$month"));
-    $to = date("'Y-m-31 23:59:59'", strtotime("$year-$month"));
+    $from = date("Y-m-01 00:00:00", strtotime("$year-$month"));
+    $to = date("Y-m-31 23:59:59", strtotime("$year-$month"));
     $pagetype = 'archive';
     $catid = '';
   // ajax-hoz szükséges adatok
     echo
       "<script>
-        var from = ".$from.";
-        var to = ".$to.";
+        var from = '".$from."';
+        var to = '".$to."';
         var pagetype = 'archive';
         var catid = '';
       </script>";

@@ -1,30 +1,31 @@
 <?php //include config
 require_once('../includes/config.php');
-include_once('menu.php');
 
 //if not logged in redirect to login page
-if(!$user->is_logged_in()){ header('Location: login.php'); }
+if(!$user->is_logged_in()){
+  header('Location: login.php');
+}
+
+$row = array(
+  'postTitle' => 'Admin - edit category',
+  'postDesc' => '',
+  'type' => '"website"'
+);
+include('../includes/head.php');
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Admin - Edit Category</title>
-
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!--------------------------- BOOTSTRAP ---------------------------------->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  <link rel="stylesheet" href="../style/main.css">
-</head>
 <body>
+	<?php include('menu.php');
+?>
 
-<div id="wrapper">
 
-	<?php include('menu.php');?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+      <h1 class="page-header">
+        Blog
+        <small>Secondary Text</small>
+      </h1>
+
 	<p><a href="categories.php">Categories Index</a></p>
 
 	<h2>Edit Category</h2>
@@ -104,7 +105,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 		<p><label>Title</label><br />
 		<input type='text' name='catTitle' value='<?php echo $row['catTitle'];?>'></p>
 
-		<p><input type='submit' name='submit' value='Update'></p>
+		<p><input class="btn btn-info" type='submit' name='submit' value='Update'></p>
 
 	</form>
 

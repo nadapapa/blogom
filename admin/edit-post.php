@@ -3,22 +3,18 @@ require_once('../includes/config.php');
 include_once('menu.php');
 
 //if not logged in redirect to login page
-if(!$user->is_logged_in()){ header('Location: login.php'); }
-?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Admin - Edit Post</title>
+if(!$user->is_logged_in()){
+  header('Location: login.php');
+}
 
-      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <!--------------------------- BOOTSTRAP ---------------------------------->
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>   <link rel="stylesheet" href="../style/main.css">
+$row = array(
+  'postTitle' => 'Admin - edit post',
+  'postDesc' => '',
+  'type' => '"website"'
+);
+include('../includes/head.php');
+?>
+<body>
   <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
   <script>
           tinymce.init({
@@ -31,12 +27,16 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
               toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
           });
   </script>
-</head>
-<body>
 
-<div id="wrapper">
-
-	<?php include('menu.php');?>
+	<?php include('menu.php');
+?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+      <h1 class="page-header">
+        Blog
+        <small>Secondary Text</small>
+      </h1>
 	<p><a href="./">Blog Admin Index</a></p>
 
 	<h2>Edit Post</h2>
@@ -169,7 +169,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 		</fieldset>
 
-		<p><input type='submit' name='submit' value='Update'></p>
+		<p><input class="btn btn-info" type='submit' name='submit' value='Update'></p>
 
 
 

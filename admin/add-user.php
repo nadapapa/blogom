@@ -1,30 +1,21 @@
 <?php //include config
 require_once('../includes/config.php');
-include_once('menu.php');
 
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){ header('Location: login.php'); }
+
+$row = array(
+  'postTitle' => 'Admin - Add user',
+  'postDesc' => '',
+  'type' => '"website"'
+);
+
+include('../includes/head.php');
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Admin - Add User</title>
-
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!--------------------------- BOOTSTRAP ---------------------------------->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  <link rel="stylesheet" href="../style/main.css">
-</head>
 <body>
-
-<div id="wrapper">
-
-	<?php include('menu.php');?>
+	<?php include('menu.php');
+ include('../includes/container.php')
+?>
 	<p><a href="users.php">User Admin Index</a></p>
 
 	<h2>Add User</h2>
@@ -106,7 +97,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 		<p><label>Email</label><br />
 		<input type='text' name='email' value='<?php if(isset($error)){ echo $_POST['email'];}?>'></p>
 
-		<p><input type='submit' name='submit' value='Add User'></p>
+		<p><input class="btn btn-info" type='submit' name='submit' value='Add User'></p>
 
 	</form>
 

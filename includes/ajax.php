@@ -8,7 +8,7 @@ if(file_exists('config.php')){
 try {
   if (isset($_GET["page"]) &&
       !empty($_GET["page"])) {
-    $page = $_GET["page"];
+    $page = (int)$_GET["page"];
   }else{
     $page = 0;
   }
@@ -23,49 +23,65 @@ try {
 
   if (isset($_GET['from']) &&
       isset($_GET['to'])) {
-    $from = "'".$_GET['from']."'";
-    $to = "'".$_GET['to']."'";
+    $from = $_GET['from'];
+    $to = $_GET['to'];
   }
+
+  // a megjelenítendő posztok száma:
+  $limit = 3;
 
   switch ($pagetype) {
     case "index":
-      $dbstring =
-        'SELECT *
+      $stmt = $db->prepare(
+        "SELECT *
         FROM blog_posts_seo
         ORDER BY postID
-        DESC';
+        DESC
+        LIMIT :page, :limit");
+      $stmt->bindParam(":page", $page, PDO::PARAM_INT);
+      $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
       break;
+
     case "catpost":
-      $dbstring =
-        'SELECT
+      $stmt = $db->prepare(
+        "SELECT
         blog_posts_seo.postID, blog_posts_seo.postTitle, blog_posts_seo.postSlug, blog_posts_seo.postDesc, blog_posts_seo.postDate
         FROM
         blog_posts_seo,
         blog_post_cats
         WHERE
          blog_posts_seo.postID = blog_post_cats.postID
-        AND blog_post_cats.catID = '.$catid.'
+        AND blog_post_cats.catID = :catid
         ORDER By postID
-        DESC';
+        DESC
+        LIMIT :page, :limit");
+        $stmt->bindParam(":catid", $catid, PDO::PARAM_INT);
+        $stmt->bindParam(":page", $page, PDO::PARAM_INT);
+        $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
       break;
+
     case "archive":
-      $dbstring =
-        'SELECT postID,
+      $stmt = $db->prepare(
+        "SELECT postID,
           postTitle,
           postSlug,
           postDesc,
           postDate
         FROM blog_posts_seo
-        WHERE postDate >= '.$from. '
-        AND postDate <= '.$to. '
+        WHERE postDate >= :from
+        AND postDate <= :to
         ORDER BY postID
-        DESC';
+        DESC
+        LIMIT :page, :limit");
+        $stmt->bindParam(":page", $page, PDO::PARAM_INT);
+        $stmt->bindParam(":from", $from, PDO::PARAM_STR, 19);
+        $stmt->bindParam(":to", $to, PDO::PARAM_STR, 19);
+        $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
       break;
   }
 
+  $stmt->execute();
 
-
-  $stmt = $db->query($dbstring." LIMIT ".$page.", 3;");
     while($row = $stmt->fetch()){
         echo <<<_END
         <!--blogposzt-->

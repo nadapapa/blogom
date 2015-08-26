@@ -3,34 +3,31 @@ require_once('../includes/config.php');
 include_once('menu.php');
 
 //if not logged in redirect to login page
-if(!$user->is_logged_in()){ header('Location: login.php'); }
+if(!$user->is_logged_in()){
+  header('Location: login.php');
+}
+
+$row = array(
+  'postTitle' => 'Admin - Add category',
+  'postDesc' => 'Kategóriák szerkesztése',
+  'type' => '"website"'
+);
+include('../includes/head.php');
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Admin - Add Category</title>
-
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!--------------------------- BOOTSTRAP ---------------------------------->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  <link rel="stylesheet" href="../style/main.css">
-</head>
 <body>
-
-<div id="wrapper">
-
-	<?php include('menu.php');?>
-	<p><a href="categories.php">Categories Index</a></p>
-
-	<h2>Add Category</h2>
-
-	<?php
-
+  <?php include('menu.php');?>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <h1 class="page-header">
+         <a href="categories.php">Categories Index</a>
+         <small>Add a category</small>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+       <?php
 	//if form has been submitted process it
 	if(isset($_POST['submit'])){
 
