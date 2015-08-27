@@ -43,7 +43,13 @@
   include("/includes/ajax.php");
 ?>
                   </div>
-                <button class="btn btn-default loadAjax">Még!</button>
+                  <?php
+                    if ($remainingPosts > 0) {
+                      echo "<button class=\"btn btn-default loadAjax\">Még $remainingPosts poszt</button>";
+                    } else {
+                      echo "<button disabled class=\"btn btn-default loadAjax\">Nincs több :(</button>";
+                    }
+                  ?>
               </div>
             <div class="col-md-4 sidebar">
           <?php require('includes/sidebar.php');?>

@@ -32,6 +32,11 @@ try {
 
   switch ($pagetype) {
     case "index":
+      $rows = $db->query(
+      'SELECT postID
+      FROM
+      blog_posts_seo');
+
       $stmt = $db->prepare(
         "SELECT *
         FROM blog_posts_seo
@@ -43,6 +48,18 @@ try {
       break;
 
     case "catpost":
+    $rows = $db->prepare(
+    "SELECT
+    blog_posts_seo.postID, blog_posts_seo.postTitle, blog_posts_seo.postSlug, blog_posts_seo.postDesc, blog_posts_seo.postDate
+    FROM
+    blog_posts_seo,
+    blog_post_cats
+    WHERE
+     blog_posts_seo.postID = blog_post_cats.postID
+    AND blog_post_cats.catID = :catid");
+    $rows->bindParam(":catid", $catid, PDO::PARAM_INT);
+    $rows->execute();
+
       $stmt = $db->prepare(
         "SELECT
         blog_posts_seo.postID, blog_posts_seo.postTitle, blog_posts_seo.postSlug, blog_posts_seo.postDesc, blog_posts_seo.postDate
@@ -61,6 +78,20 @@ try {
       break;
 
     case "archive":
+      $rows = $db->prepare(
+      "SELECT postID,
+        postTitle,
+        postSlug,
+        postDesc,
+        postDate
+      FROM blog_posts_seo
+      WHERE postDate >= :from
+      AND postDate <= :to"
+      );
+      $rows->bindParam(":from", $from, PDO::PARAM_STR, 19);
+      $rows->bindParam(":to", $to, PDO::PARAM_STR, 19);
+      $rows->execute();
+
       $stmt = $db->prepare(
         "SELECT postID,
           postTitle,
@@ -79,6 +110,8 @@ try {
         $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
       break;
   }
+
+  $remainingPosts = ($rows->rowCount()) - ($page + $limit);
 
   $stmt->execute();
 
@@ -132,4 +165,5 @@ _END;
   }catch(PDOException $e) {
       echo $e->getMessage();
   }
- ?>
+echo "<script> var remaining = $remainingPosts </script>";
+?>

@@ -15,9 +15,16 @@ $(function(){
           if(data == ''){
             $('.loadAjax').html('Nincs több :(');
             $('.loadAjax').attr('disabled', true);
-          }
-          counter += 3;
+          } else {
+            counter += 3;
             $('.posts').append(data);
+            $('.loadAjax').html('Még ' + remaining + ' poszt');
+          }
+          if(remaining <= 0) {
+            $('.loadAjax').html('Nincs több :(');
+            $('.loadAjax').attr('disabled', true);
+          }
+
         },
 
         error: function(xhr, desc, err) {

@@ -35,16 +35,15 @@ $row = array(
       <div class="row">
         <div class="col-md-8">
           <div class="posts">
-            <?php
-            //
-            // $dbstring = 'SELECT *
-            //   FROM blog_posts_seo
-            //   ORDER BY postID
-            //   DESC';
-
-            require('includes/ajax.php');?>
+            <?php require('includes/ajax.php');?>
           </div>
-          <button class="btn btn-default loadAjax">Még!</button>
+          <?php
+            if ($remainingPosts > 0) {
+              echo "<button class=\"btn btn-default loadAjax\">Még $remainingPosts poszt</button>";
+            } else {
+              echo "<button disabled class=\"btn btn-default loadAjax\">Nincs több :(</button>";
+            }
+          ?>
         </div>
         <div class="col-md-4 sidebar">
           <?php require('includes/sidebar.php');?>
