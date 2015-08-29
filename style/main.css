@@ -66,8 +66,3 @@ button.loadAjax {
   font-size: 1.5em;
   font-weight: 900;
 }
-
-ul.nav:nth-child(3) > li:nth-child(1) > a:nth-child(1) {
-  padding-top: 9px;
-  padding-bottom: 9px;
-}

@@ -1,15 +1,18 @@
 <?php
 function slug($text){
-  // replace non letter or digits by -
-  $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
-  // trim
-  $text = trim($text, '-');
-  // transliterate
-  $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-  // lowercase
-  $text = strtolower($text);
-  // remove unwanted characters
-  $text = preg_replace('~[^-\w]+~', '', $text);
+
+  	$search = explode(",",
+  "á,í,ű,ő,ü,ö,ú,ó,é");
+  	$replace = explode(",",
+  "a,i,u,o,u,o,u,o,e");
+  	$text = str_replace($search, $replace, $text);
+  
+    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+    $text = trim($text, '-');
+    $text = strtolower($text);
+    $text = preg_replace('~[^-\w]+~', '', $text);
+
+
   if (empty($text))
   {
     return 'n-a';

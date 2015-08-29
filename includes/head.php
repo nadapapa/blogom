@@ -3,8 +3,10 @@
 if(isset($row['postTitle'])){
   if($row['postTitle'] == 'Blog főoldal'){
       $title = $row['postTitle'];
-    } else {
-      $title = 'Blog/Posztok/'.$row['postTitle'];
+  } elseif ($row['postTitle'] == '404') {
+    $title = $row['postTitle'];
+  } else {
+    $title = 'Blog/Posztok/'.$row['postTitle'];
   }
 } elseif (isset($row['catTitle'])) {
   $title = "Blog/Kategória/".$row['catTitle'];
@@ -51,6 +53,8 @@ if(isset($row['postDesc'])){
   <meta property="og:title" content=<?php echo '"'.$title.'"'; ?>/>
   <meta property="og:description" content=<?php echo $desc;?>/>
 
+  <!-- Font awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- BOOTSTRAP -->

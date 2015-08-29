@@ -1,6 +1,5 @@
 <div class="well well-sm">
-  <h3>Friss posztok</h3>
-  <hr />
+  <h3> <i class="fa fa-clock-o"></i> Friss posztok</h3>
     <ul>
       <?php
         $stmt = $db->query(
@@ -17,8 +16,7 @@
 </div>
 
 <div class="well well-sm">
-  <h3>Kategóriák</h3>
-  <hr />
+  <h3><i class="fa fa-tags"></i> Kategóriák</h3>
   <ul class="list-group">
     <?php
       $stmt = $db->query(
@@ -36,16 +34,15 @@
 
       while($row = $stmt->fetch()){
 	      echo
-				'<a class="btn btn-default btn-sm" href="c-'.$row['catSlug'].'">'.$row['catTitle'].'
-	      <span class="badge">'.$catid = $cat->fetch()['COUNT(*)'].'</span></a>';
+				'<a class="btn btn-default btn-sm" href="c-'.$row['catSlug'].'"> '.$row['catTitle'].'
+	      <span class="badge"> '.$catid = $cat->fetch()['COUNT(*)'].' </span></a> ';
       }
 		?>
   </ul>
 </div>
 
 <div class="well well-sm">
-  <h3>Archívum</h3>
-  <hr />
+  <h3><i class="fa fa-calendar"></i> Archívum</h3>
   <ul class="list-group">
     <?php
       $stmt = $db->query(

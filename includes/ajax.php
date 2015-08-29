@@ -130,7 +130,7 @@ _END;
         <div class="panel-body">
           <small>
             <p>
-              <span class="glyphicon glyphicon-calendar"></span> '.date('Y M. s - H:i', strtotime($row['postDate'])).' in ';
+              <span class="glyphicon glyphicon-calendar"></span> '.date('Y M. d. H:i', strtotime($row['postDate'])).' <i class="fa fa-tags"></i> ';
 
               $stmt2 = $db->prepare(
               'SELECT catTitle,
@@ -157,7 +157,8 @@ _END;
 
         echo '<article class="lead">'.strip_tags($row['postDesc']).'</article>
               <p>
-               <a class="btn btn-default" role="button" href="'.$row['postSlug'].'">Tovább</a>
+               <a class="btn btn-default" role="button" href="'.$row['postSlug'].'">Tovább
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
               </p>
         </div><!--panel-body-->
       </div><!--panel panel--->';

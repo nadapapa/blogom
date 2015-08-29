@@ -18,10 +18,10 @@ $(function(){
           } else {
             counter += 3;
             $('.posts').append(data);
-            $('.loadAjax').html('Még ' + remaining + ' poszt');
+            $('.loadAjax').html('Még ' + remaining + ' poszt <span class=\"glyphicon glyphicon-chevron-down\" aria-hidden=\"true\"></span></a>');
           }
           if(remaining <= 0) {
-            $('.loadAjax').html('Nincs több :(');
+            $('.loadAjax').html('Nincs több poszt <i class="fa fa-frown-o"></i>');
             $('.loadAjax').attr('disabled', true);
           }
 
