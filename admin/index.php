@@ -17,6 +17,7 @@ if(isset($_GET['delpost'])){
 	$stmt = $db->prepare('DELETE FROM blog_post_cats WHERE postID = :postID');
 	$stmt->execute(array(':postID' => $_GET['delpost']));
 
+  include('../rss.php');
 	header('Location: index.php?action=deleted');
 	exit;
 }

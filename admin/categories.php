@@ -11,8 +11,8 @@ if(isset($_GET['delcat'])){
 	$stmt = $db->prepare('DELETE FROM blog_cats WHERE catID = :catID') ;
 	$stmt->execute(array(':catID' => $_GET['delcat']));
 
-	header('Location: categories.php?action=deleted');
-	exit;
+	// header('Location: categories.php?action=deleted');
+	// exit;
 }
 
 
@@ -24,15 +24,7 @@ $row = array(
 include('../includes/head.php');
 ?>
 <body>
-	<script language="JavaScript" type="text/javascript">
-	function delcat(id, title)
-	{
-		if (confirm("Are you sure you want to delete '" + title + "'"))
-		{
-			window.location.href = 'categories.php?delcat=' + id;
-		}
-	}
-	</script>
+	<script src="ajax.js"></script>
 
 	<?php include('menu.php');
 ?>
@@ -53,7 +45,7 @@ include('../includes/head.php');
 	}
 	?>
 
-	<table>
+	<table class="categories table table-condensed">
 	<tr>
 		<th>Title</th>
 		<th>Action</th>
@@ -64,14 +56,14 @@ include('../includes/head.php');
 			$stmt = $db->query('SELECT catID, catTitle, catSlug FROM blog_cats ORDER BY catTitle DESC');
 			while($row = $stmt->fetch()){
 
-				echo '<tr>';
+				echo "<tr class='$row[catID]'>";
 				echo '<td>'.$row['catTitle'].'</td>';
 				?>
 
-				<td>
-					<a href="edit-category.php?id=<?php echo $row['catID'];?>">Edit</a> |
-					<a href="javascript:delcat('<?php echo $row['catID'];?>','<?php echo $row['catSlug'];?>')">Delete</a>
-				</td>
+				<td><div class='btn-group' role='group'>
+					<a class='btn btn-danger' href="javascript:delcat('<?php echo $row['catID'];?>','<?php echo $row['catSlug'];?>')">Delete</a>
+       <a class='btn btn-info' id="edit<?php echo $row['catID'];?>" href="javascript:editcat('<?php echo $row['catID'];?>','<?php echo $row['catTitle'];?>')">Edit</a>
+					</div></td>
 
 				<?php
 				echo '</tr>';
@@ -84,8 +76,7 @@ include('../includes/head.php');
 	?>
 	</table>
 
-	<p><a  class="btn btn-info" href='add-category.php'>Add Category</a></p>
-
+<input id="addcat" type='text' name='catTitle' value=''> <div class="btn btn-sm btn-info ajaxCat">Add category <i class="fa fa-plus"></i></div><br>
 </div>
 
 </body>

@@ -1,5 +1,6 @@
 <?php require('includes/config.php');
       require('includes/head.php');
+      setlocale(LC_TIME,'hu_HU');
 
 // év és hónap meghatározása
   $month = $_GET['month'];

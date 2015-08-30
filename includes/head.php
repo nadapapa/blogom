@@ -1,19 +1,29 @@
 <?php
+setlocale(LC_TIME,'hu_HU');
+$path = $_SERVER['DOCUMENT_ROOT'];
+
+
 //       title
 if(isset($row['postTitle'])){
-  if($row['postTitle'] == 'Blog főoldal'){
+  switch ($row['postTitle']) {
+    case 'Blog főoldal':
+    case '404':
+    case 'Projektek':
+    case 'Rólam':
       $title = $row['postTitle'];
-  } elseif ($row['postTitle'] == '404') {
-    $title = $row['postTitle'];
-  } else {
-    $title = 'Blog/Posztok/'.$row['postTitle'];
+      break;
+    default:
+      $title = 'Blog/Posztok/'.$row['postTitle'];
+      break;
   }
+
 } elseif (isset($row['catTitle'])) {
   $title = "Blog/Kategória/".$row['catTitle'];
-} elseif(isset($_GET['year']) &&
- isset($_GET['month'])){
-    $title = "Blog/Archívum/".$_GET['year']."/".mb_convert_case(utf8_encode(strftime('%B', mktime(0, 0, 0, $_GET['month'], 10))),  MB_CASE_TITLE, "UTF-8");
+
+} elseif(isset($_GET['year']) && isset($_GET['month'])){
+  $title = "Blog/Archívum/".$_GET['year']."/".mb_convert_case(utf8_encode(strftime('%B', mktime(0, 0, 0, $_GET['month'], 10))),  MB_CASE_TITLE, "UTF-8");
   }
+
 
 //      description
 if(isset($row['postDesc'])){
@@ -38,7 +48,7 @@ if(isset($row['postDesc'])){
   <meta name="description" content=<?php echo $desc; ?>/>
   <meta name="author" content="Náday Ádám">
 
-  <link rel="icon" href="includes/favicon.ico">
+  <link rel="icon" href="/includes/favicon.ico">
 
   <title><?php echo $title; ?></title>
 
@@ -62,4 +72,6 @@ if(isset($row['postDesc'])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="/style/main.css">
- </head>
+
+ <link rel="alternate" href="feed.php" title="RSS" type="application/rss+xml" />
+</head>

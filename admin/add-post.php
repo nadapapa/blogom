@@ -16,6 +16,7 @@ include('../includes/head.php');
 ?>
 
 <body>
+<script src="ajax.js"></script>
   <?php include('menu.php');?>
   <div class="container">
     <div class="row">
@@ -61,13 +62,23 @@ include('../includes/head.php');
 		}
 
 		if(!isset($error)){
-
 			try {
-
 				$postSlug = slug($postTitle);
-
 				//insert into database
-				$stmt = $db->prepare('INSERT INTO blog_posts_seo (postTitle,postSlug,postDesc,postCont,postDate) VALUES (:postTitle, :postSlug, :postDesc, :postCont, :postDate)') ;
+				$stmt = $db->prepare(
+      'INSERT INTO blog_posts_seo (
+        postTitle,
+        postSlug,
+        postDesc,
+        postCont,
+        postDate)
+      VALUES (
+        :postTitle,
+        :postSlug,
+        :postDesc,
+        :postCont,
+        :postDate)') ;
+
 				$stmt->execute(array(
 					':postTitle' => $postTitle,
 					':postSlug' => $postSlug,
@@ -80,14 +91,16 @@ include('../includes/head.php');
 				//add categories
 				if(is_array($catID)){
 					foreach($_POST['catID'] as $catID){
-						$stmt = $db->prepare('INSERT INTO blog_post_cats (postID,catID)VALUES(:postID,:catID)');
+						$stmt = $db->prepare(
+          'INSERT INTO blog_post_cats (postID,catID)
+          VALUES(:postID,:catID)');
 						$stmt->execute(array(
 							':postID' => $postID,
 							':catID' => $catID
 						));
 					}
 				}
-
+    include('../rss.php');
 				//redirect to index page
 				header('Location: index.php?action=added');
 				exit;
@@ -95,9 +108,7 @@ include('../includes/head.php');
 			} catch(PDOException $e) {
 			    echo $e->getMessage();
 			}
-
 		}
-
 	}
 
 	//check for any errors
@@ -119,28 +130,29 @@ include('../includes/head.php');
 		<p><label>Content</label><br />
 		<textarea name='postCont' cols='60' rows='10'><?php if(isset($error)){ echo $_POST['postCont'];}?></textarea></p>
 
-		<fieldset>
+		<fieldset class="categories">
 			<legend>Categories</legend>
 
+      <input id="addcat" type='text' name='catTitle' value=''> <div class="btn btn-sm btn-info ajaxCat"><i class="fa fa-plus"></i></div><br>
+
 			<?php
+			$stmt2 = $db->query(
+      'SELECT catID, catTitle
+      FROM blog_cats
+      ORDER BY catTitle');
 
-			$stmt2 = $db->query('SELECT catID, catTitle FROM blog_cats ORDER BY catTitle');
 			while($row2 = $stmt2->fetch()){
-
 				if(isset($_POST['catID'])){
-
 					if(in_array($row2['catID'], $_POST['catID'])){
-                       $checked="checked='checked'";
-                    }else{
-                       $checked = null;
+         $checked="checked='checked'";
+      }else{
+         $checked = null;
                     }
 				}
-
-			    echo "<input type='checkbox' name='catID[]' value='".$row2['catID']."'> ".$row2['catTitle']."<br />";
+		    echo "<input type='checkbox' name='catID[]' value='".$row2['catID']."'> ".$row2['catTitle']."<br />";
 			}
 
 			?>
-
 		</fieldset>
 
 		<p><input class="btn btn-info" type='submit' name='submit' value='Submit'></p>

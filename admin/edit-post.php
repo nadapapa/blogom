@@ -15,6 +15,8 @@ $row = array(
 include('../includes/head.php');
 ?>
 <body>
+  <script src="ajax.js"></script>
+
   <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
   <script>
           tinymce.init({
@@ -96,7 +98,7 @@ include('../includes/head.php');
 						));
 					}
 				}
-
+        include('../rss.php');
 				//redirect to index page
 				header('Location: index.php?action=updated');
 				exit;
@@ -144,8 +146,10 @@ include('../includes/head.php');
 		<p><label>Content</label><br />
 		<textarea name='postCont' cols='60' rows='10'><?php echo $row['postCont'];?></textarea></p>
 
-		<fieldset>
+		<fieldset class="categories">
 			<legend>Categories</legend>
+
+      <input id="addcat" type='text' name='catTitle' value=''> <div class="btn btn-sm btn-info ajaxCat"><i class="fa fa-plus"></i></div><br>
 
 			<?php
 
@@ -170,8 +174,6 @@ include('../includes/head.php');
 		</fieldset>
 
 		<p><input class="btn btn-info" type='submit' name='submit' value='Update'></p>
-
-
 
 	</form>
 

@@ -6,33 +6,6 @@ if(!$user->is_logged_in()){
   header('Location: login.php');
 }
 
-$row = array(
-  'postTitle' => 'Admin - edit category',
-  'postDesc' => '',
-  'type' => '"website"'
-);
-include('../includes/head.php');
-?>
-<body>
-	<?php include('menu.php');
-?>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-      <h1 class="page-header">
-        Blog
-        <small>Secondary Text</small>
-      </h1>
-
-	<p><a href="categories.php">Categories Index</a></p>
-
-	<h2>Edit Category</h2>
-
-
-	<?php
-
 	//if form has been submitted process it
 	if(isset($_POST['submit'])){
 
@@ -57,7 +30,7 @@ include('../includes/head.php');
 				$catSlug = slug($catTitle);
 
 				//insert into database
-				$stmt = $db->prepare('UPDATE blog_cats SET catTitle = :catTitle, catSlug = :catSlug WHERE catID = :catID') ;
+				$stmt = $db->prepare('UPDATE blog_cats SET catTitle = :catTitle, catSlug = :catSlug WHERE catID = :catID');
 				$stmt->execute(array(
 					':catTitle' => $catTitle,
 					':catSlug' => $catSlug,
@@ -65,8 +38,6 @@ include('../includes/head.php');
 				));
 
 				//redirect to index page
-				header('Location: categories.php?action=updated');
-				exit;
 
 			} catch(PDOException $e) {
 			    echo $e->getMessage();
@@ -76,10 +47,6 @@ include('../includes/head.php');
 
 	}
 
-	?>
-
-
-	<?php
 	//check for any errors
 	if(isset($error)){
 		foreach($error as $error){
@@ -87,29 +54,4 @@ include('../includes/head.php');
 		}
 	}
 
-		try {
-
-			$stmt = $db->prepare('SELECT catID, catTitle FROM blog_cats WHERE catID = :catID') ;
-			$stmt->execute(array(':catID' => $_GET['id']));
-			$row = $stmt->fetch();
-
-		} catch(PDOException $e) {
-		    echo $e->getMessage();
-		}
-
 	?>
-
-	<form action='' method='post'>
-		<input type='hidden' name='catID' value='<?php echo $row['catID'];?>'>
-
-		<p><label>Title</label><br />
-		<input type='text' name='catTitle' value='<?php echo $row['catTitle'];?>'></p>
-
-		<p><input class="btn btn-info" type='submit' name='submit' value='Update'></p>
-
-	</form>
-
-</div>
-
-</body>
-</html>

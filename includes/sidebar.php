@@ -2,6 +2,8 @@
   <h3> <i class="fa fa-clock-o"></i> Friss posztok</h3>
     <ul>
       <?php
+      setlocale(LC_TIME,'hu_HU');
+
         $stmt = $db->query(
 				 'SELECT postTitle, postSlug
 					FROM blog_posts_seo

@@ -29,6 +29,16 @@
            <i class="fa fa-github fa-lg"></i> GitHub <span class="sr-only">Github</span>
           </a>
         </li>
+        <li>
+         <a href="mailto:nadapapa@gmail.com" title="Írhatsz is nekem">
+        <i class="fa fa-envelope-o"></i> E-mail <span class="sr-only">E-mail</span>
+         </a>
+        </li>
+        <li>
+        <a href="http://feeds.feedburner.com/NadapapaBlogja" title="RSS feed">
+        <i class="fa fa-rss"></i> RSS <span class="sr-only">RSS</span>
+        </a>
+        </li>
       </ul>
     </div><!-- /navbar-collapse -->
   </div><!-- /container-fluid -->
