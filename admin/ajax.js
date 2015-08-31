@@ -72,7 +72,7 @@ $.ajax({
 
 
 
-$(".ajaxCat").on("click", function(){
+$("#addcat").on("click", function(){
  var addcat = document.getElementById('addcat').value;
 		$.ajax({
 			url: 'add-category.php',

@@ -62,7 +62,7 @@ include('../includes/head.php');
 	  </div><br>
 	  <div class="row">
 			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-	<table>
+	<table class="table table-condensed">
 	<tr>
 		<th>Title</th>
 		<th>Date</th>
@@ -79,10 +79,10 @@ include('../includes/head.php');
 				echo '<td>'.date('jS M Y', strtotime($row['postDate'])).'</td>';
 				?>
 
-				<td>
-					<a href="edit-post.php?id=<?php echo $row['postID'];?>">Edit</a> |
-					<a href="javascript:delpost('<?php echo $row['postID'];?>','<?php echo $row['postTitle'];?>')">Delete</a>
-				</td>
+				<td><div class='btn-group' role='group'>
+					<a class='btn btn-info' href="edit-post.php?id=<?php echo $row['postID'];?>">Edit</a>
+					<a class='btn btn-danger' href="javascript:delpost('<?php echo $row['postID'];?>','<?php echo $row['postTitle'];?>')">Delete</a>
+				</div></td>
 
 				<?php
 				echo '</tr>';
