@@ -39,7 +39,7 @@ if(isset($_GET['deluser'])){
   <script language="JavaScript" type="text/javascript">
   function deluser(id, title)
   {
-	  if (confirm("Are you sure you want to delete '" + title + "'"))
+	  if (confirm("Biztos törölni akarod '" + title + "'-t?"))
 	  {
 	  	window.location.href = 'users.php?deluser=' + id;
 	  }
@@ -99,4 +99,6 @@ if(isset($_GET['deluser'])){
 </div>
 
 </body>
+<?php include('../includes/foot.php');?>
+
 </html>

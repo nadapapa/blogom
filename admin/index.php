@@ -99,6 +99,7 @@ include('../includes/head.php');
 	<p><a class="btn btn-success" href='add-post.php'>Add Post</a></p>
 
 </div>
+<?php include('../includes/foot.php');?>
 
 </body>
 </html>

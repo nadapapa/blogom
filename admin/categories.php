@@ -80,4 +80,6 @@ include('../includes/head.php');
 </div>
 
 </body>
+<?php include('../includes/foot.php');?>
+
 </html>

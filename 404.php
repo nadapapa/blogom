@@ -27,11 +27,12 @@ include('includes/nav.php'); ?>
 <h3>
   <p>
 		Nyugi, még <a class="link" href="https://hu.wikipedia.org/wiki/Szin%C3%B3p%C3%A9i_Diogen%C3%A9sz"> Szinópéi Diogenész</a> sem találja.
-   
+
 </p></h3>
 </div>
 </div>
 </div>
 </div>
+<?php require('includes/foot.php');?>
 
 </body>

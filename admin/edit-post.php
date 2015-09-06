@@ -138,7 +138,7 @@ include('../includes/head.php');
 		<input type='hidden' name='postID' value='<?php echo $row['postID'];?>'>
 
 		<p><label>Title</label><br />
-		<input type='text' name='postTitle' value='<?php echo $row['postTitle'];?>'></p>
+		<input size="150" type='text' name='postTitle' value='<?php echo $row['postTitle'];?>'></p>
 
 		<p><label>Description</label><br />
 		<textarea name='postDesc' cols='60' rows='10'><?php echo $row['postDesc'];?></textarea></p>
@@ -178,6 +178,7 @@ include('../includes/head.php');
 	</form>
 
 </div>
+<?php include('../includes/foot.php');?>
 
 </body>
 </html>

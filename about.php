@@ -47,5 +47,6 @@ include("includes/nav.php");
 	  	</div>
 	</div>
 </div>
+<?php require('includes/foot.php');?>
 </body>
 </html>

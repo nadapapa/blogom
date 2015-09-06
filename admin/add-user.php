@@ -102,3 +102,4 @@ include('../includes/head.php');
 	</form>
 
 </div>
+<?php include('../includes/foot.php');?>
