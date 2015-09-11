@@ -23,6 +23,7 @@ include("$path/includes/nav.php");
 	<div class="row">
 		<div class="col-md-12">
 			<div class="posts">
+
 				<div class="panel panel-default">
 	 			 <div class="panel-heading">
 	 				 <h2 class="panel-title">
@@ -37,7 +38,23 @@ include("$path/includes/nav.php");
             </a>
 					 			</p>
 				 </div><!--panel-body-->
-				</div><!--panel panel--->'
+				</div><!--panel panel--->
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <a class="link" href="steganometrographia-php-hu/">Álhírgenerátor</a>
+          </h2>
+         </div><!--panel heading-->
+         <div class="panel-body">
+           <article class="lead"><p>Random hírcímek generálása a magyar hírportálok RSS feedjeiből.</p> <p>Használt technológiák: PHP, AJAX, Bootstrap, jQuery, XML</p></article>
+                <p>
+                 <a class="btn btn-default" role="button" href="hirgenerator">Tovább
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </a>
+                </p>
+         </div><!--panel-body-->
+        </div><!--panel panel--->'
     </div>
    </div>
  </div>

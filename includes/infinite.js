@@ -5,10 +5,10 @@ $(function(){
         url: 'includes/ajax.php',
         type: 'get',
         data: {'page': counter,
-               'pagetype': pagetype,
-               'catid': catid,
-               'from': from,
-               'to': to
+             'pagetype': pagetype,
+             'catid': catid,
+             'from': from,
+             'to': to
              },
 
         success: function(data) {
