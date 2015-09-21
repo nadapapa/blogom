@@ -43,7 +43,7 @@ include("$path/includes/nav.php");
       <div class="panel panel-default">
         <div class="panel-heading">
           <h2 class="panel-title">
-            <a class="link" href="steganometrographia-php-hu/">Álhírgenerátor</a>
+            <a class="link" href="hirgenerator">Álhírgenerátor</a>
           </h2>
          </div><!--panel heading-->
          <div class="panel-body">
